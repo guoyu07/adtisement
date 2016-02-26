@@ -1,0 +1,136 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="UTF-8"/>
+	<title></title>
+	<style type="text/css">
+		*{
+			margin: 0px;
+			padding: 0px;
+		}
+		#ads,#web{
+			width: 726px;
+			margin: 0 auto;
+		}
+		#ads{
+			position: relative;
+			overflow: hidden;
+			display: none;
+		}
+		span{
+			position: absolute;
+			top: 0;
+			right: 0;
+			background: #fff;
+			opacity: 0.5;
+		}
+		span:hover{
+			opacity: 0.8;
+		}
+		span a{
+			text-decoration: none;
+			color: red;
+			font-size: 20px
+			font-weight:normal;
+		}
+		#ads1{
+			position: fixed;
+			right: 0;
+			bottom: 0;
+		}
+		#ads1 video{
+			width: 200px;
+			height: 200px;
+			position:relative;
+			background: #ccc;
+		}
+		#ads1 span{
+			position: absolute;
+			top: 0;
+			right: 0;
+		}
+
+	</style>
+</head>
+<body>
+	<div id="ads">
+		<img id='ad' src="images/2.jpg" width="726px " height="306px"/>
+		<img id="ad1" src="images/3.jpg" width="736px" height="50px">
+		<span id="close"><a href="javascript:void(0);">X</a></span>
+	</div>
+	<div id="ads1">
+		<video src="02.mp4" controls="controls" autoplay="autoplay"></video>
+		<span id="fixed"><a href="javascript:void(0);">X</a></span>
+	</div>
+	<div id="web">
+		<img src="images/9.png"/>
+	</div>
+
+</body>
+	<script type="text/javascript">
+
+		var $=function(id){
+			return document.getElementById(id);
+		}
+		var ads=$('ads');
+		var ad1=$('ad1');
+		var ad=$('ad');
+		var h=0;
+		var minH=ad1.height;
+		var maxH=ad.height;
+		function adDown(){
+			if (h<maxH) {
+				h+=6;
+				ads.style.height=h+'px';
+				ads.style.display='block';
+				setTimeout(adDown,1);
+			}else{
+				ads.style.height=h+'px';
+				ads.style.display='block';
+				setTimeout(adUp,3000);
+			}
+		}
+
+		function adUp(){
+			if (h>minH) {
+				h-=6;
+				ads.style.height=h+'px';
+				setTimeout(adUp,1);
+			}else{
+				ad.style.display='none';
+				ad1.style.display='block';
+			}
+		}
+		$('close').onclick=function(){
+			ads.style.display='none';
+			ads.style.height=0+'px';
+		}
+		ad1.onclick=function up(){
+			if (h<306) {
+				h+=6;
+				ad1.style.display='none';
+				ad.style.display='block';
+				ad.style.height=h+'px';
+				ads.style.height=h+'px';
+				setTimeout(up,1);
+
+			}else{
+				ad.style.height=h+'px';
+				ads.style.height=h+'px';
+			}
+		}
+		ad.onclick=function(){
+			adUp();
+
+		}
+		$('fixed').onclick=function(){
+			$('ads1').style.display='none';
+		}
+
+		setTimeout(adDown,3000);
+
+
+
+
+	</script>
+</html>

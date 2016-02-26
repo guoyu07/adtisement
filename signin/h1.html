@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="UTF-8"/>
+	<title>轮播图</title>
+	<script type="text/javascript">
+		function play(count,imgs,img){
+			// var imgs=new Array('images/2.jpg','images/3.jpg','images/4.jpg','images/5.jpg');
+			// var img=document.getElementById('img');
+			img.src=imgs[count];
+		}
+		// function move(){
+		// 	clearInterval(play);
+		// 	var imgs=new Array('images/2.jpg','images/3.jpg','images/4.jpg','images/5.jpg');
+		// 	var img=document.getElementById('img');
+
+		// }
+		window.onload=function(){
+			var count=0;
+				var imgs=new Array('images/2.jpg','images/3.jpg','images/4.jpg','images/5.jpg');
+			var img=document.getElementById('img');
+			// var previous=document,getElementById('previous');
+			// var next=document.getElementById('next');
+			setInterval(function(){
+				play(count,imgs,img);
+				count++;
+				if(count>imgs.length-1){
+					count=0
+				}
+			},1000);
+			// previous.onclick=
+		}
+	</script>
+	<style type="text/css">
+		#previous,#next{
+			font-size: 24px;
+			font-weight: bold;
+			width:150px;
+			height:150px;
+			background: #ccc;
+			border-radius: 50%;
+			opacity: 0.5;
+		}
+		#previous:hover,#next:hover{
+			cursor: pointer;
+		}
+
+	</style>
+</head>
+<body>
+<div id="images">
+	<img id='img' src="images/2.jpg" alt="images"/>
+</div>
+<div id="arrow">
+	<span id="previous">&lt;</span>
+	<span id="next">&gt;</span>
+</div>
+
+</body>
+</html>

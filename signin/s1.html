@@ -1,0 +1,41 @@
+ <!DOCTYPE html>
+<html>
+<head>
+	<meta charset="UTF-8"/>
+	<title></title>
+	<script type="text/javascript">
+		window.onload=function(){
+			var count=0;
+			var images=document.getElementsByTagName('img');
+				setInterval(function(count,images){
+				
+					for(var i=0;i<images.length;i++){
+						images[i].style.display='none';
+					}
+					images[count].style.display='block';
+					count++;
+					if(count>images.lenght-1){
+						count=0;
+					}
+				},2000);
+
+		}
+	</script>
+</head>
+<body>
+	<div id="player">
+		<img src="images/2.jpg" alt="images"/>
+		<img src="images/3.jpg" alt="images"/>
+		<img src="images/4.jpg" alt="images"/>
+		<img src="images/5.jpg" alt="images"/>
+
+	</div>
+
+
+
+
+
+
+
+</body>
+</html>

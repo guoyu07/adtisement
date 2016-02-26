@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="UTF-8"/>
+	<title>Ajax</title>
+</head>
+<body>
+
+	<script type="text/javascript">
+		function getXMLhttpRequest(){
+			try{
+				try{
+					return new ActiveXObject('Microsoft.XMLHTTP');
+				}catch(e){
+					return new ActiveXObject('Msxml2.XMLHTTP');
+				}
+
+			}catch(e){
+				return new XMLHttpRequest();
+			}
+		}
+		var myRequest=getXMLhttpRequest();
+		fucntion callAjax(){
+			var lastname='Smith';
+			var url="myserverscript.php?surname="+lastname;
+			var myRandom=parseInt(Math.random()*99999999);
+			myRequest.open('GET',url+'&rand='+myRandom,true);
+			myRequest.onreadystatechange=responseAjax;
+			myRequest.send(null);
+		}
+		function responseAjax(){
+			if(myRequest.readyState==4){
+				if (myRequest.readyStatus==200) {
+					alert('The server said:'+myRequest.responseText);
+				}else{
+					alert("An error has occurred:"+myRequest.statusText);
+				}
+			}
+		}
+	</script>
+
+</body>
+</html>

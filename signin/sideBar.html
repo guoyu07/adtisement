@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>sidebar</title>
+	<style type="text/css">
+		*{
+			padding: 0px;
+			margin: 0px;
+		}
+		#container{
+			width: 100%;
+			position: relative;
+		}
+		#sidebar{
+			width: 30%;
+			height: 900px;
+			position: absolute;
+			left: -238px;
+			top: 0;
+			background: #ccc;
+		}
+		#content{
+			width: 100%;
+			height: 900px;
+			display: inline-block;
+			position: absolute;
+			top: 0;
+			right: 0;
+			background: #c23;
+		}
+
+	</style>
+</head>
+<body>
+	<div id="container">
+		<!-- <div id="sidebar"></div> -->
+		<div id="content">
+			<button id="show">点击出现</button>
+		</div>
+	</div>
+</body>
+<script type="text/javascript">
+var step=15;
+var content=document.getElementById('content');
+var h=0;
+function show(){
+	if (Math.abs(h)<content.offsetWidth) {
+		h-=6;
+		h=h+'px';
+		content.style.right+=h;
+	}
+}
+setInterval(show,1000);
+
+
+
+
+</script>
+
+
+
+
+
+
+
+
+
+
+</html>
